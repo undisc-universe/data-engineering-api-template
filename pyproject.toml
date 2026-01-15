@@ -3,19 +3,54 @@ name = "data-engineering-api"
 version = "0.1.0"
 description = "End-to-end data engineering template for API ingestion using Python, PySpark, Airflow, and a medallion architecture."
 authors = [
-    {name = "Pedro Gonçalves",email = "pedro_fgo@hotmail.com"}
+    { name = "Pedro Gonçalves", email = "pedro_fgo@hotmail.com" }
 ]
-license = {text = "MIT"}
+license = { text = "MIT" }
 readme = "README.md"
-requires-python = "^3.11"
+requires-python = ">=3.11,<4.0"
 dependencies = [
-    "pandas (>=2.3.3,<3.0.0)",
-    "numpy (>=2.4.1,<3.0.0)",
-    "ipykernel (>=7.1.0,<8.0.0)",
-    "pyspark (==3.5.4)"
+    "pandas>=2.3.3,<3.0.0",
+    "numpy>=2.4.1,<3.0.0",
+    "ipykernel>=7.1.0,<8.0.0",
+    "pyspark==3.5.4",
 ]
-
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "black>=25.12.0,<26.0.0",
+    "ruff>=0.14.12,<0.15.0",
+    "pre-commit (>=4.5.1,<5.0.0)",
+    "pytest (>=9.0.2,<10.0.0)",
+    "pytest-cov (>=7.0.0,<8.0.0)",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.venv
+  | build
+  | dist
+  | notebooks
+)/
+'''
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+exclude = [".venv", "notebooks", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+

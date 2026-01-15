@@ -33,3 +33,21 @@ derby.log
 .DS_Store
 Thumbs.db
 .env
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+
+# -------------------------
+# Editor / IDE artifacts
+# -------------------------
+*.swp
+*.swo
+*.tmp
+*.bak
+*~
+
+# Ruff / Pytest
+.ruff_cache/
+.pytest_cache/
